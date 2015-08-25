@@ -5,8 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "connect": "^3.4.0",
-    "dynamodb": "^0.3.6",
     "connect-route": "^0.1.5",
+    "cors": "^2.7.1",
+    "dynamodb": "^0.3.6",
     "request": "^2.61.0",
     "shasum": "^1.0.1",
     "tape": "^4.2.0"

@@ -8,6 +8,7 @@ var connectRoute = require('connect-route');
 var http = require('http');
 var request = require('request');
 var shasum = require('shasum');
+var cors = require('cors');
 
 var ddb = dynamodb.ddb({
   accessKeyId: AWS_ACCESS_KEY_ID, 
@@ -26,6 +27,8 @@ ddb.createTable('sha1uri', {
 });
  
 var app = connect();
+
+app.use(cors());
  
 app.use(connectRoute(function (router) {
   router.get('/uri/:uri', function (req, res, next) {
@@ -33,14 +36,14 @@ app.use(connectRoute(function (router) {
     ddb.query('sha1uri', uri, {}, function(err, resp, cap) {
       if (resp && resp.items && resp.items[0] && resp.items[0].sha1) {
         var sha1 = resp.items[0].sha1;
-        console.log("got uri:", uri, "sha1:", sha1);
+        //console.log("got uri:", uri, "sha1:", sha1);
         res.end(sha1);
       }
       else {
         request({url:uri, encoding: null}, function(err, resp, body) {
           var sha1 = shasum(body);
           ddb.putItem('sha1uri', {uri:uri, sha1:sha1}, {}, function(err, res, cap) {
-            console.log("put uri:", uri, "sha1:", sha1);
+            //console.log("put uri:", uri, "sha1:", sha1);
           });
           res.end(sha1);
         });
