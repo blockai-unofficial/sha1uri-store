@@ -1,0 +1,31 @@
+{
+  "name": "sha1uri-store",
+  "version": "0.0.1",
+  "description": "A service that returns the SHA-1 of a remote URI and caches the results in a database",
+  "main": "index.js",
+  "dependencies": {
+    "connect": "^3.4.0",
+    "dynamodb": "^0.3.6",
+    "connect-route": "^0.1.5",
+    "request": "^2.61.0",
+    "shasum": "^1.0.1",
+    "tape": "^4.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.4.1"
+  },
+  "scripts": {
+    "start-dev": "foreman start -f Procfile_dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blockai/sha1uri-store.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blockai/sha1uri-store/issues"
+  },
+  "homepage": "https://github.com/blockai/sha1uri-store#readme"
+}
